@@ -1,0 +1,132 @@
+---
+output: html_document
+---
+R programming - Vectors in R
+========================================================
+<i>Author : Abhinav Agrawal</i>
+
+
+Vector is a basic object in R.  It is a sequence of elements of the same class type.  We can have a logical vector,  numeric vector,  character vector, complex vector or a raw vector.
+
+
+<b>Creating a simple vector object.</b>
+
+
+Assign 1 to an object called y using the following expression :
+
+```{r}
+y = 1
+```
+Notice that this is just an assignment. The values of object y will not be printed on the console.
+
+We can print the vector y by simply typing y or using the print() function.
+
+```{r}
+y
+
+```
+Here y is a numeric vector with one element and that element is 1
+
+```{r}
+print(y)
+```
+
+To check the class type of the vector object y, use the class() function on object y
+```{r}
+class(y)
+```
+Yes, we just created a very simple numeric vector, congratulations !!
+
+
+
+
+<b> Vector objects with sequence of elements</b>
+
+We can generate a sequence of elements by using <b><i>colon (:)</i></b>
+
+```{r}
+x <- 1:10
+x
+```
+
+```{r}
+x2 <- -1:3
+x2
+```
+
+
+
+
+We can also generate a sequence of elements by using <b><i>c() function</i></b>, concatenate function
+
+```{r}
+xyz <- c(1,2,3,4:9)
+xyz
+```
+
+We can check the class of the vector object xyz by using the class() function :
+
+```{r}
+class(xyz)
+```
+
+We can find the number of elements in the vector by using the <b><i>length()</i></b> function :
+
+```{r}
+length(xyz)
+```
+This shows that the vector object xyz contains 9 numeric elements.
+
+Next, an example of a vector object of <b><i>character class</i></b> type :
+```{r}
+yy <- c('a','b','c')
+yy
+```
+
+
+```{r}
+class(yy)
+```
+
+
+
+Next, an example of a vector object of <b><i>complex class</b></i> type :
+
+```{r}
+zz <- c(0+1i,8+2i)
+zz
+```
+
+```{r}
+class(zz)
+```
+
+Another way to generate the sequence is by using the <b><i>seq() function </i></b>
+
+```{r}
+s <- seq(from = 2, to = 20, by = 3)
+s
+```
+
+Another way to generate sequence is by using <b><i>rep()</i></b>, repeat function :
+
+```{r}
+rep(5,7)
+```
+
+```{r}
+rep("a",4)
+```
+
+```{r}
+rep(c("a","b"),2)
+```
+
+```{r}
+rep(c("a","b"), each = 2)
+```
+
+```{r}
+v <- vector("numeric", length =  10)
+v
+```

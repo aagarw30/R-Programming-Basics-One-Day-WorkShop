@@ -1,0 +1,147 @@
+One dimentional statistical analysis and summary 
+========================================================
+<i>Author : Abhinav Agrawal </i>
+
+Histogram is to represent the distribution of the data (pattern of the values, frequencies, outliers)
+
+BINs are usually equal in size but they need not necessarily.   
+
+Start describing histogram by :
+Modes, uni - bi
+range of the modes , in which range the mode lies, 
+Right or left skewd, depending on the left and right tail, how long it is..
+Presence of Outliers, 
+compare the values of mean and median,
+symmetry about the peak, symetric or not,
+Compare the histogram and the boxplot,
+
+<b>Objective</b> is to demonstrate 5 point statistical summary, measures of central tendency, box plot and histogram using the iris dataset.
+
+<b> Dataset Name</b> Iris
+
+<b>Source of dataset</b> :  UCI dataset repository, URL:  http://archive.ics.uci.edu/ml/datasets/Iris
+
+<b>Statistical Software</b> used is R.
+
+<b><i>Let's Get Started </i></b> 
+
+Download the dataset and set the R working directory to the desried folder location where the dataset is stored. This is important else R may not be able to locate the dataset in the default directory.
+
+The working directory path given below is where I stored the dataset. You may want to give the path to your working directory. 
+
+Change the path as needed using the <b>setwd()</b> function in the R command line or the menu options in R console.
+
+(Here is link to an instructional video on "How to set R working directory")
+
+<b>getwd()</b> function could be used to know the current working directory in R.
+
+<b>Next,</b> read the Iris dataset from the working directory using the read.table() function.
+
+Note that this dataset does not have the header, and the first row is the actual observations and hence the header should be set to F or FALSE so that R knows that the first is actually an observation versus the header.
+
+<i>header is set to FALSE by default in read.table() function in case you do not explicitly mark header as FALSE</i>. 
+
+```{r}
+mydata <- read.table("iris.txt", header = F) # Read the dataset
+head(mydata) # this will show first 6 rows of the dataset
+attributes(mydata) # this will display the attributes of the object mydata
+
+# we see that the class of the object mydata is DATA FRAME
+
+# the column names are default as V folowed by column number, V1, V2, V3, V4
+
+
+# The first column is Sepal Length, the second column is Sepal Width, third column is Petal Length and fourth column is Petal Width
+
+names(mydata) <- c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width") # Assigning the column names using the C() to the attribute names
+
+names(mydata)
+
+head(mydata) # displays the first 6 rows, this would given an idea of how the data looks like.
+
+str(mydata) # shows the structure of the dataframe object mydata
+
+summary(mydata$Sepal.Length)
+
+fivenum(mydata$Sepal.Length)
+
+hist(mydata$Sepal.Length, labels = T, xlab = "Sepal Length", col="Yellow", main = "Histogram of Sepal Length")  
+
+hist(mydata$Sepal.Length, breaks = seq(4, 8, by = 0.40), labels = T, xlab = "Sepal Length", col="Yellow", main = "Histogram of Sepal Length")  
+
+hist(mydata$Sepal.Length, breaks = seq(4, 8, l=13), labels = T, xlab = "Sepal Length", col="Yellow", main = "Histogram of Sepal Length") 
+
+hist(mydata$Sepal.Length, breaks = seq(4, 8, l=21), labels = T, xlab = "Sepal Length", col="Yellow", main = "Histogram of Sepal Length")  
+
+
+# Plot histogram on the feature Sepal Length using the hist() function.
+# Couple of things happen, first the range is divided into interval of equal length (also called BINs). The size or width of the BIN would depend on the number of BINs. It also calculates the BIN frequency for each of the BINs. The heigth of the bar shows the frequency.  Shape of the histogram does depend on the number of the BINs.
+
+rug(mydata$Sepal.Length) # shows where the bulk of data lies, where the outliers are .
+
+abline(v=mean(mydata$Sepal.Length), col = "BLUE") # vertical Blue color line to indicate the mean
+
+
+abline(v=median(mydata$Sepal.Length), col = "RED")  # vertical Red color line to indicate the median
+
+
+```
+<b>Summary :</b>
+<br>The minimum length of Sepal is 4.30
+<br>The maximum length of Sepal is 7.90
+<br> The middle value (or the median) of the sepal length is 5.80. Half of the Sepal lengths are less than 5.80 and another half are more than 5.80 
+<br>The typical or most common value (mean) of the Sepal Length is 5.84.
+<br> The median and mean represents the center of the data sample. Most of the values are scattered around the center values.
+<br> First quartile is 5.10. Suggests that 25% of the Sepal length are below 5.10
+<br> Third quartile is 6.40. Suggests that 75% of the Sepal length are below 6.40
+<br> Histogram is unimodal, with one mode having the modal frequency of 29
+
+Since mean is greater than the median, it gives an indication that the histogram is slightly right skewd
+
+
+Mean, Median & Mode are the 3 measures of central tendency - Measures of location
+Represents a center around which the measurements are distributed.
+Mean is a typical (or expected) value of the sample data representing the center of the data. It is the average of the sample data. 
+Mean is sensitive to outliers.
+Median is the middle value of the data set such that half of the data are above and half below the median. Insensitive to outliers and robust.
+Mode are the most frequent values of the dataset.
+Most of the dataset values are clustered around the center.
+Measures of central tendency does not tell much about the dataset, except a typical value in the given dataset or where the center of the data lies
+
+Measures of central tendency - Measures of Position
+Min,
+Max,
+Quartiles (nth quartile indicates n% of the data lie below that value)
+
+Measurement of spread
+Measure of dispersion along with the measures of central tendency can describe the dataset better in terms of how the data is clustered or spread about the mean.
+Smaller the spread, less is the variance and more reliable and consistent is the data
+Range tells us how is the spread of the data (more scattered or less scattered). Range is sensitive to outliers.
+Another measure for spread is Standard Deviation. It tells us how how variant is the data from its mean.
+Smaller the SD, lesser is the variance from mean
+SD - square root of the sample variance.
+Variance - average of the squared differences between the observations and the sample mean
+Inter quartile range - difference between the 1st and 3rd quartiles. Middle half of the data lies in this range.
+Range - difference between the maximum and minimum. All the data can fit into this range.
+IDR and Range does not account all of the data values. What if we want to account for all the data values.
+
+```{r}
+boxplot(mydata$Sepal.Length, ylab = "Sepal Length", col = "Green")
+IQR(mydata$Sepal.Length)
+# IQR also describes the spread of the data
+# Middle half of the data can fit into the interval of length IQR.
+
+summary(mydata$Sepal.Length)
+# Modified box plot as a solution to remove the effect of outliers
+5.10 - 1.5 * 1.3  # Inner Fence
+6.40 + 1.5 * 1.3  # Outer Fence
+# One forth of data in the upper whisker contains high values and for the same reason mean is more than the median. ALso, this shows that the histogram is slightly right skewd.
+# Mean is not a robust measure of the center as it is sensitive to the outliers. Median is not sensitive to outliers.
+# Trimmed mean is another solution to overcome the mean influenced by outliers. 10% of the value are trimmed to get the trimmed mean.
+# Spread -  how far away the data seems to be from the central value.
+# Range
+max(mydata$Sepal.Length) - min(mydata$Sepal.Length) 
+# All of the values can fit into the interval of length of the range.
+
+
+```

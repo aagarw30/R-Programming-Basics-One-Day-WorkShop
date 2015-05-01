@@ -1,0 +1,41 @@
+---
+title: "mtcars dataset introduction"
+author: "Abhinav Agrawal"
+date: "April 24, 2015"
+output: ioslides_presentation
+---
+
+## mtcars dataset
+The mtcars dataset comes from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+- mpg, Miles/(US) gallon, determinant of fuel effeciency
+- cyl, Number of cylinders (4,6,8)
+- disp,  Displacement (cu.in.) measures overall volume in the engine as a factor of cylinder circumfrance, depth and total number of cylinders
+- hp,  Gross horsepower, theoretical output of an engine’s power output
+- drat,  Rear axle ratio, indicates the number of turns of the drive shaft for every one rotation of the wheel axle
+
+
+
+##
+
+- wt,  Weight (lb/1000), weight of the vehicle per 1000lbs (half US ton)
+- qsec,  1/4 mile time, Fastest time to travel 1/4 mile from standstill (in seconds)
+- vs,  V/S, Binary variable signaling the engine cylinder configuration a V-shape (vs=0) or Straight Line (vs=1). V==0 and S==1
+- am, Transmission (0 = automatic, 1 = manual)
+- gear,  Number of forward gears, manual transmissions have either 4 or 5 forward gears; Automatic either 3 or 4
+- carb,  Number of carburetors
+
+##
+```{r}
+str(mtcars)
+
+```
+
+## Dataset Study Objective
+
+
+- Explore different variables in the dataset
+- Summary Stastics (min , max, mean, median, quartiles)
+- How fuel consumption could be related to other aspects of automobile
+- Determine whether mpg is better for automatic or manual transmission?
+

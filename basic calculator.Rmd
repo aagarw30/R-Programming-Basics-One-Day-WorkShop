@@ -1,0 +1,76 @@
+---
+output: html_document
+---
+Programming in R - Basic Arithematic Operations
+========================================================
+<i>Author : Abhinav Agrawal</i>
+
+Addition, Substraction, Multiplication, Division, Modulus, power, abs(), round(), log(), log2(), exp(), sqrt(), date(), pi, assignment operator, example function
+
+
+Addition
+```{r}
+5 + 10
+```
+
+Substraction
+```{r}
+10 - 3
+```
+Division
+```{r}
+5 / 2
+10/0
+0/10
+-10/0
+0/0
+sin(45)
+cos(45)
+```
+
+Multiplication
+```{r}
+100 * 3
+```
+Modulo
+```{r}
+5 %% 3
+```
+
+
+```{r}
+2 ^ 2
+```
+
+
+```{r}
+2 ^ 3
+2*3 + 4*5 - 6/7
+sqrt(4)
+```
+
+```{r}
+log(200)
+log10(23)
+log2(23)
+log(23, base = 10)
+pi
+date()
+```
+
+
+```{r}
+log2(400)
+abs(-21)
+round(2.333333 , 2)
+
+x = 2
+y <- 3
+x + y -> z
+z
+
+example(round)
+example(log)
+example(abs)
+example(sqrt)
+```

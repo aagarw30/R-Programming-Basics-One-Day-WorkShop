@@ -1,0 +1,126 @@
+Programming in R - tutorial :  Matrix Data Type
+========================================================
+<i> Author: Abhinav Agrawal </i>
+
+<b>Matrix</b> is a data type in R with the dimension attribute - the rows & the columns.  It has the elements of same class type. We can have character, integer or complex elements in the matrices and so on. We cannot have elements of mixed modes/class types such as both integer and character elements in the same matrix.<br>
+
+Let us start with <b>creating matrix</b>
+```{r}
+
+m1 <- 1:4 # m1 is a vector object with a sequence of elements 
+dim(m1) <- c(2,2) # define the dimension as 2X2 (2 rows and 2 columns) to make it a matrix
+m1 # prints the matrix
+class(m1) # show the class type, in this case it would be matrix class
+typeof(m1) # mode of the elements. In this case elements stored in the matrix are integer type 
+nrow(m1)  # outputs the number of rows in the matrix
+ncol(m1)  # outputs the number of columns in the matrix
+
+m2 <- matrix(nrow = 2, ncol = 2) # we will get the matrix filled with NA as we have not defined the matrix values
+m2
+dim(m2)
+attributes(m2)
+
+m2 <- matrix(seq(1,4,1), nrow = 2, ncol = 2) # used a seq() to get a sequence of elements
+m2 # note that by default the matrix is filled column wise. To fill row wise, we need to tell R exclusively. 
+
+m2 <- matrix(seq(1,4,1), nrow = 2, ncol = 2, byrow = T) # byrow = T would tell R to fill the elements row wise
+m2 
+
+matrix(c(1,2,3,4), c(2,2)) # elements and dimensions of the matrix both defined using a c()function
+
+m2 <- matrix(c(0+1i,1+2i,3+4i,4+5i), nrow = 2, ncol = 2, byrow = T) 
+# byrow = T would tell R to fill the elements row wise
+m2 
+class(m2)
+typeof(m2)
+
+m2 <- matrix(c("A", "B", "C", "D"), nrow = 2, ncol = 2, byrow = T) 
+# byrow = T would tell R to fill the elements row wise
+m2 
+class(m2)
+typeof(m2)
+```
+Now, let us do some <b>subsetting</b> in matrix
+```{r}
+m3 <- matrix(1:9, nrow = 3, ncol = 3)
+m3
+m3[1,1] # extracting an element by giving its location
+m3[,1] # extracting row elements of a specific column, in this case column 1
+m3[,2] # extracting row elements of a specific column, in this case column 2
+m3[,3] # extracting row elements of a specific column, in this case column 3
+m3[1,] # extracting column elements of a specific row, in this case row 1
+m3[2,] # extracting column elements of a specific row, in this case row 2
+m3[3,] # extracting column elements of a specific row, in this case row 3
+diag(m3) # extracts the diagonal elements of the matrix
+```
+
+<b> Assign row names and column names </b> to the matrix
+```{r}
+m4 <- matrix(1:4, byrow = T, ncol=2)
+m4
+
+colnames(m4) <- c("COL1", "COL2")
+rownames(m4) <- c("ROW1", "ROW2")
+m4
+
+dimnames(m4) <- list(c("COL1", "COL2"),c("ROW1", "ROW2"))
+m4
+```
+
+Using <b>cbind()</b> and <b>rbind()</b> functions in the matrix:
+```{r}
+m6 <- 0:3
+m7 <- 2:5 
+# both the vectors should be of either the same length or length of bigger vector should be the multiple of shorter length vector
+
+cbind(m6,m7) # fill column wise
+rbind(m6,m7) # fill row wise
+
+```
+
+<b> Mathematical operations </b> on matrix
+
+```{r}
+# create 2 matrices
+mat10 <- matrix(5:8, c(2,2))
+mat11 <- matrix(seq(1,8,2), c(2,2))
+
+mat10 + 10 # Addition of scalar to a matrix
+
+mat10 + mat11 # Adding two matrices
+
+mat10 - mat11 # Substraction of 2 matrices
+
+mat10 * 2 # Matrix multiplication (scalar multiplied to a matrix)
+
+mat10 * mat11 # Multiplication of 2 matrices (element wise multiplication)
+
+mat10 %*% mat11 # Multiplication of matrix (the actual matrix multiplication)
+
+t(mat11) # Transpose of a matrix
+
+solve(mat10) # Inverse of a mtarix
+
+rowSums(mat10) # sum of rows
+
+colSums(mat10) # sum of columns
+
+colMeans(mat10) # return the means of the columns 
+
+rowMeans(mat10) # # return the means of the columns 
+
+sum(mat10) # sum of all the elements in the matrix
+
+eigen(mat10) # to calculate the eigen values
+
+```
+We may want to convert a vector to a matrix - using the <b> as.matrix() </b> function for exclusive coercion
+```{r}
+mn <- 1:6
+mn # mn is a vector object
+
+as.matrix(mn) # as.matrix() function converts the vector mn to a matrix object
+
+```
+
+

@@ -1,0 +1,120 @@
+---
+title: "ggplot"
+author: "Abhinav Agrawal"
+date: "April 24, 2015"
+output: ioslides_presentation
+---
+
+## What is ggplot2?
+
+- Is a R graphics package developed by Hadley Wickham
+
+- Implementation of Grammar of graphics - aesthetics (color, shape, size), geoms (points, lines, bars)
+
+- Layers of functions (best of both basic and lattice R plotting systems)
+
+- qplot() , very basic plotting function like plot() and hides complexities
+
+- ggplot(), gives more control 
+
+
+
+## Basic Components of ggplot
+
+- aesthetic mappings (color, size, data)
+
+- geoms (points, lines, shapes)
+
+- facets (for conditional plots, subsetting)
+
+- stats (bins, quantiles, smoothing)
+
+## Diamond dataset 
+The diamonds dataset that we will use in this application exercise consists of prices and quality information from about 54,000 diamonds, and is included in the ggplot2 package.
+
+The dataset contains information on prices of diamonds, as well as various attributes of diamonds, some of which are known to influence their price (in 2008 $s): the 4 Cs (carat, cut, color, and clarity) , as well as some physical measurements (depth, table, price, x, y, and z). 
+
+
+##
+```{r}
+library(ggplot2)
+data(diamonds)
+str(diamonds)
+```
+
+##
+Carat is a unit of mass equal to 200 mg and is used for measuring gemstones and pearl. 
+```{r}
+summary(diamonds$carat)
+
+```
+
+Cut grade is is an objective measure of a diamond’s light performance, or, what we generally think of as sparkle.
+```{r}
+levels(diamonds$cut)
+
+```
+
+
+##
+Colour may vary from colourless to light yellow
+```{r}
+levels(diamonds$color)
+```
+
+
+Finally Clarity grading
+```{r}
+levels(diamonds$clarity)
+
+```
+
+
+## Histogram
+```{r}
+library(ggplot2)
+qplot(price, data=diamonds, geom="histogram", binwidth=500)
+```
+
+## Barplot
+```{r}
+qplot(cut, data=diamonds, geom="bar")
+```
+
+## Scatterplot
+```{r}
+qplot(carat, price, data=diamonds)
+```
+
+## Scatterplot
+```{r}
+qplot(log(carat), log(price), data=diamonds)
+```
+
+## Aesthetics
+```{r}
+qplot(carat, price, data=diamonds, colour=color)
+```
+
+## Aesthetics
+```{r}
+qplot(carat, price, data=diamonds, size=carat)
+```
+
+## Aesthetics
+```{r}
+qplot(carat, price, data=diamonds, shape=cut)
+```
+
+## Faceting
+```{r}
+qplot(price, carat, data=diamonds, facets = . ~ color)
+```
+
+## Aesthetics
+```{r}
+qplot(price, carat, data=diamonds, facets = color ~ clarity)
+```
+
+
+
